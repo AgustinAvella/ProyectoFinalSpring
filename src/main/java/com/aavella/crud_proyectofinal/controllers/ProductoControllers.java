@@ -18,22 +18,24 @@ public class ProductoControllers {
     @Qualifier("productoService")
     private ProductoService productoService;
 
-
     @RequestMapping("/addProducto")
     //Vamos a agregar la notacion de PathVariable que nos permitira tomar desde la url del navegador un valor.
     public ResponseEntity<String> addProducto(){
 
-        productoService.guardar();
+        productoService.guardarProducto();
 
         return new ResponseEntity<>("guardado", HttpStatus.OK);
     }
-
-    @RequestMapping(value="/listarProductos", method= RequestMethod.GET)
-    public String listar(Model model){
-        model.addAttribute("titulo", "Listado de Productos");
-        model.addAttribute("productos", productoService.listar());
-        return "listar";
+    @RequestMapping("/eliminarProducto")
+    public void eliminarProductos(Integer id) {
+        productoService.eliminarProductos(id);
     }
 
+    @RequestMapping(value="/listarProductos", method= RequestMethod.GET)
+    public String listarProductos(Model model){
+        model.addAttribute("titulo", "Listado de Productos");
+        model.addAttribute("productos", productoService.listarProductos());
+        return "listarProductos";
+    }
 
 }

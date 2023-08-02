@@ -4,6 +4,9 @@ import com.aavella.crud_proyectofinal.models.Producto;
 
 
 public interface ProductoService {
-    void guardar();
-    Iterable<Producto> listar();
+    void guardarProducto();
+    Iterable<Producto> listarProductos();
+
+    void eliminarProductos(Integer id);
+
 }

@@ -14,7 +14,7 @@ public class ProductoServiceImpl implements ProductoService {
 
 
     @Override
-    public void guardar() {
+    public void guardarProducto() {
         Producto producto1 = new Producto();
         producto1.setNombre("Moto Honda XR 250");
         producto1.setPrecio(49000.0);
@@ -22,7 +22,12 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public Iterable<Producto> listar() {
+    public Iterable<Producto> listarProductos() {
         return productoRepository.findAll();
+    }
+
+    @Override
+    public void eliminarProductos(Integer id) {
+        productoRepository.deleteById(id);
     }
 }
